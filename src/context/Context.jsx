@@ -1,17 +1,44 @@
-import { createContext } from "react"
+import generateAPIResponse from "../config/gemini";
+import { createContext, useState } from "react";
 
-export const Context = createContext
+export const Context = createContext();
 
 const ContextProvider = (props) => {
-    const contextValue = {
+    const [input, setInput] = useState("");
+    const [recentPrompt, setRecentPrompt] = useState("");
+    const [prevPrompt, setPrevPrompt] = useState([]);
+    const [showResult, setShowResult] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [resultData, setResultData] = useState("");
 
-    }
+    const onSent = async () => {
+        setResultData("")
+        setLoading(true)
+        setShowResult(true)
+        setRecentPrompt(input)
+        const response = await generateAPIResponse(input);
+        setResultData(response)
+        setLoading(false)
+        setInput("")
+
+    };
+
+    const contextValue = {
+        prevPrompt,
+        setPrevPrompt,
+        recentPrompt,
+        setRecentPrompt,
+        onSent,
+        showResult,
+        loading,
+        resultData,
+        input,
+        setInput
+    };
 
     return (
-        <Context.Provider value={contextValue}>
-            {props.children}
-        </Context.Provider>
-    )
-}
+        <Context.Provider value={contextValue}>{props.children}</Context.Provider>
+    );
+};
 
 export default ContextProvider;
