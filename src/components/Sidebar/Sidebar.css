@@ -7,6 +7,9 @@
     justify-content: space-between;
     background-color: #f0f4f9;
     padding: 10px 15px;
+    position: sticky;
+    top: 0;
+    left: 0;
 }
 
 .sidebar .top {
