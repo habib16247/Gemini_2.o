@@ -49,7 +49,9 @@ const Main = () => {
             alt="menu_icon"
           />
         )}
-        <p>Gemini</p>
+        <div className="logoResize">
+          <img className="geminiLogo" src={assets.gemini_logo_icon} alt="gemini_logo_icon" />
+        </div>
         <img src={assets.user_icon} alt="user_icon" />
       </div>
       <div className="main_container">

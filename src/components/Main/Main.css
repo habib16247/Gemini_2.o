@@ -37,6 +37,20 @@
   -o-border-radius: 50%;
 }
 
+.main .nav .logoResize {
+  box-sizing: border-box;
+  width: 85px;
+  height: 35px;
+  overflow: hidden;
+}
+
+.main .nav .geminiLogo {
+  width: 90px;
+  margin-top: -30px;
+
+}
+
+
 .main_container {
   max-width: 900px;
   margin: auto;
@@ -210,6 +224,8 @@
 
 .result .gemini_icon {
   width: 50px;
+  animation: round 3s;
+  -webkit-animation: round 3s;
 }
 
 @keyframes round {
