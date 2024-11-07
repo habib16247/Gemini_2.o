@@ -29,11 +29,17 @@ const Main = () => {
             <p>{recentPrompt}</p>
           </div>
           <div className="result_data">
-            <img src={assets.gemini_icon} alt="gemini_icon" />
-            <p dangerouslySetInnerHTML={{__html:resultData}}></p>
+            <img style={{animation: loading ? "round 3s infinite linear" : ""}} className="gemini_icon" src={assets.gemini_icon} alt="gemini_icon" />
+            {loading ? <div className="loader">
+              <hr />
+              <hr />
+              <hr />
+            </div> :
+            <p className="result_text" dangerouslySetInnerHTML={{__html:resultData}}></p>
+            }
           </div>
         </div> : (
-          <>
+          <div className="middle">
             <div className="greet">
               <p>
                 <span>Hello, Dev.</span>
@@ -60,7 +66,7 @@ const Main = () => {
                 <img src={assets.code_icon} alt="code_icon" />
               </div>
             </div>
-          </>
+          </div>
         )}
 
         <div className="main_bottom">

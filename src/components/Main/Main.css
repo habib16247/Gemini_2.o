@@ -28,6 +28,16 @@
   margin: auto;
 }
 
+.main_container .middle {
+  padding-bottom: 80px;
+  max-height: 70vh;
+  overflow-y: scroll;
+}
+
+.main_container .middle::-webkit-scrollbar {
+  display: none;
+}
+
 .main_container .greet {
   margin: 20px 0;
   font-size: 50px;
@@ -85,18 +95,29 @@
     -o-border-radius: 50%;
 }
 
+.card img:hover {
+  background: rgba(255, 255, 0);
+}
+
 .main .card p {
     color: #585858;
     font-size: 17px;
 }
 
 .main_bottom {
+    display: block;
     position: absolute;
+    background: #fff;
+    border-radius: 90px;
     bottom: 0;
     width: 100%;
     max-width: 900px;
     padding: 0px 20px;
     margin: auto;
+    -webkit-border-radius: 90px;
+    -moz-border-radius: 90px;
+    -ms-border-radius: 90px;
+    -o-border-radius: 90px;
 }
 
 .main_bottom .search_box {
@@ -170,4 +191,72 @@
   display: flex;
   align-items: start;
   gap: 20px;
+  /* max-width: 900px; */
+  padding-bottom: 70px;
+}
+
+.result .gemini_icon {
+  width: 50px;
+}
+
+@keyframes round {
+  0% {
+    width: 50px;
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+}
+
+50% {
+    width: 55px;
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+}
+
+100% {
+    width: 60px;
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+}
+}
+
+.loader {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.loader hr {
+  border-radius: 4px;
+  border: none;
+  background-color: #f6f7f8;
+  background: linear-gradient(to right, #9ed7ff, #fff, #9ed7ff);
+  background-size: 800px 50px;
+  height: 20px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  animation: loader 3s infinite linear;
+  -webkit-animation: loader 3s infinite linear;
+}
+
+
+@keyframes loader {
+  0% {
+    background-position: -800px 0px;
+  }
+
+  100% {
+    background-position: 800px 0px;
+  }
 }
