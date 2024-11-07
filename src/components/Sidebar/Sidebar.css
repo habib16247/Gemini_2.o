@@ -41,10 +41,21 @@
     cursor: pointer;
 }
 
-
 .sidebar .recent {
     display: flex;
     flex-direction: column;
+}
+
+
+.sidebar .recent .all_recent {
+    display: flex;
+    flex-direction: column;
+    max-height: 44vh;
+    overflow-y: scroll;
+}
+
+.sidebar .recent .all_recent::-webkit-scrollbar {
+    display: none;
 }
 
 .sidebar .recent_title {
@@ -55,7 +66,7 @@
 .sidebar .recent_entry {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     gap: 10px;
     padding: 10px;
     border-radius: 50px;

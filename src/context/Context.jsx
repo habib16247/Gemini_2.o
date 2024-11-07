@@ -26,15 +26,22 @@ const ContextProvider = (props) => {
     }
   };
 
-  const onSent = async () => {
+  const onSent = async (prompt) => {
     timeoutsClear(); // Clear previous timeouts before starting new ones
     setResultData("");
     setLoading(true);
     setShowResult(true);
-    setRecentPrompt(input);
-
+    let response;
     try {
-      const response = await generateAPIResponse(input);
+      if (prompt !== undefined) {
+        response = await generateAPIResponse(prompt)
+        setRecentPrompt(prompt)
+      } else {
+        setPrevPrompt(prev => [...prev, input])
+        setRecentPrompt(input)
+        response = await generateAPIResponse(input)
+      }
+      // const response = await generateAPIResponse(input);
       let responseArray = response.split("**");
       let newResponse = "";
       for (let i = 0; i < responseArray.length; i++) {
@@ -70,6 +77,7 @@ const ContextProvider = (props) => {
     setRecentPrompt,
     onSent,
     showResult,
+    setShowResult,
     loading,
     resultData,
     input,

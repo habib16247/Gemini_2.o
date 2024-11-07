@@ -1,25 +1,44 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {assets} from "../../assets/assets"
 import "./Sidebar.css"
+import { Context } from '../../context/Context'
 
 const Sidebar = () => {
 
+    const {onSent, prevPrompt, setPrevPrompt, setShowResult, setRecentPrompt} = useContext(Context)
+
     const [extended, setExtended] = useState(false)
+
+    const loadPrompt = async(prompt) => {
+        try {
+            setRecentPrompt(prompt)
+            return onSent(prompt)
+        } catch (error) {
+            console.error("API Error: ", error)
+        }
+    }
 
   return (
     <div className="sidebar">
         <div className="top">
             <img src={assets.menu_icon} alt="menu_icon" className="menu" onClick={() => setExtended(prev => !prev)} />
-            <div className="new_chat" style={{borderRadius: extended ? "50px" : "50%" }}>
+            <div onClick={() => setShowResult(false)} className="new_chat" style={{borderRadius: extended ? "50px" : "50%" }}>
                 <img src={assets.plus_icon} alt="plus_icon" />
-                {extended ? <p style={{paddingRight: "50px"}}>New Chat</p> : null}
+                {extended ? <p style={{paddingRight: "50px", textWrap: "nowrap"}}>New Chat</p> : null}
             </div>
             {extended ? <div className="recent">
                 <p className="recent_title">Recent</p>
-                <div className="recent_entry">
-                    <img src={assets.message_icon} alt="message_icon" />
-                    <p>What is react...</p>
+                <div className="all_recent">
+                {prevPrompt.map((item, index) => {
+                    return (
+                        <div onClick={() => loadPrompt(item)} className="recent_entry">
+                            <img src={assets.message_icon} alt="message_icon" />
+                            <p>{item.slice(0,18)}...</p>
+                        </div>
+                    )
+                })}
                 </div>
+                
             </div> : null}
         </div>
 
