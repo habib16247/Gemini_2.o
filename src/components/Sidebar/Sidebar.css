@@ -1,5 +1,11 @@
 
 
+#smallScreenCross {
+    position: absolute;
+    top: 60px;
+    right: 25px;
+}
+
 .sidebar {
     min-height: 100vh;
     display: inline-flex;
@@ -44,6 +50,8 @@
 .sidebar .recent {
     display: flex;
     flex-direction: column;
+    animation: fadeIn 1.5s;
+    -webkit-animation: fadeIn 1.5s;
 }
 
 
@@ -88,4 +96,11 @@
 .sidebar .bottom_item {
     padding-right: 4000px;
     cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .slide {
+        position: absolute;
+        z-index: 1;
+    }
 }

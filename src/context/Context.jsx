@@ -10,6 +10,8 @@ const ContextProvider = (props) => {
   const [showResult, setShowResult] = useState(false);
   const [loading, setLoading] = useState(false);
   const [resultData, setResultData] = useState("");
+  const [sidebarShow, setSidebarShow] = useState(true)
+  const [extended, setExtended] = useState(false);
   const timeouts = []; // Store timeouts to clear them if needed
 
   const delayPara = (index, nextWord) => {
@@ -82,6 +84,10 @@ const ContextProvider = (props) => {
     resultData,
     input,
     setInput,
+    sidebarShow,
+    setSidebarShow,
+    setExtended,
+    extended
   };
 
   return (
